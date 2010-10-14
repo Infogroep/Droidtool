@@ -1,0 +1,41 @@
+8
+
+dir
+6
+svn+ssh://igwe.rave.org/infogroep/research/droidtool/repo.svn/DroidTool/res/layout
+svn+ssh://igwe.rave.org/infogroep/research/droidtool/repo.svn
+
+
+
+2010-10-14T12:20:39.972494Z
+6
+rivmeche
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+09915770-4473-4d19-9802-537437c77164
+
+main.xml
+file
+
+
+
+
+2010-10-14T13:53:47.000000Z
+96d24b9d94d28956c756c7b8667e3775
+2010-10-14T12:20:39.972494Z
+6
+rivmeche
+has-props
+

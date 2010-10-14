@@ -1,0 +1,69 @@
+1. add some new software to allow colaboration (downloading from the SVN repo)
+	-> help   
+	-> install new software 
+	-> select the main source (Galileo)
+	-> unfold the collaboration pane 
+	-> select following items:
+		- Mylyn Bridge: Eclipse IDE
+		- Mylyn Bridge: Java Develpment
+		- Subversive SVN Integration for the Mylyn project
+		- Subversive SVN Team Provider
+	-> click next, and again next
+	-> accept the EULA
+	-> finish
+	-> get a coke and wait till it's done
+	-> Yes to restart (Eclipse, not your Beloved PC)
+
+	-> afer restart select at least the SVN Kit 1.2.3 (the servers SVN is currently, 10/2010, 1.5.1)
+	-> Again go through the steps, clicking next and finish, get some food and click Yes to restart Eclipse
+
+
+2. Add a new SVN project in Eclipse
+	-> File
+	-> New
+	-> Other
+	-> Unfold the SVN item
+	-> select Project from SVN
+	-> click Next
+	-> In General:
+		- URL = svn+ssh://igwe.rave.org/infogroep/research/droidtool/repo.svn
+		- use custom Label = Droidtool
+		- enter your username and password (and save it?)
+		- Next
+	-> Browse
+		- Select Droidtool x (x => version number)
+	-> Finish
+	-> Check out as a project with the name specified: Droidtool
+	-> Next
+	-> Select the location you want to store the project
+	-> finish
+
+3. Get the Android SDK
+	-> Download SDK from android website
+	-> set sdk in a findable location
+	-> open a terminal window
+	-> type android
+	-> slect at least the 1.5 API's
+	-> install them
+	-> When it says "done" close the (small) window, and go to the Virtual Devices tab
+	-> create a new android 1.5 device (leave all the rest blanck)
+	-> close the window
+	-> In Eclipse, go to Window
+	-> Prefferences
+	-> Android, and set the SDK location to the correct dir
+
+4. Common problems
+------------------
+4.1 Cant find the Gem folder
+	Do not panic. It is ok, try getting to sync with the repository again (right click on the project -> team -> Sync stuff)
+	Then try running it as a android app.
+	If this doesnt work, restart Eclipse and try running it again.
+	If this doesnt work, restart Eclipse and try running it again.
+	If this doesnt work, restart Eclipse and try running it again.
+	You get the point!
+
+5. Contact info
+---------------
+tom@infogroep.be
+rik@infogroep.be
+
