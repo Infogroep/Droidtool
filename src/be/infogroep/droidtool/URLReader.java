@@ -63,9 +63,8 @@ public class URLReader {
 		}
 		out.close();
 		in.close();
-		} catch(Exception e){
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+		} catch(IOException e){
+			throw new TokenException("Wrong Username/password");
 		}
 		//Stripping begin and end quotes
 		return output.substring(1, output.length() -1);
