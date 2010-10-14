@@ -12,10 +12,10 @@ import android.content.Context;
 
 public class StorageInterface {
 
-	String FILENAME = "DroidtoolStorage";
+	static String FILENAME = "DroidtoolStorage";
 	
 	//use getApplicationContext() as context parm
-	public void Save(String token, Context ctx) throws FileNotFoundException {
+	public static void Save(String token, Context ctx) throws FileNotFoundException {
 		String string = token;
 		
 		FileOutputStream fos = ctx.openFileOutput(FILENAME, Context.MODE_PRIVATE); //openFileOutput underlined red
@@ -28,7 +28,7 @@ public class StorageInterface {
 
 	}
 	
-	public String Get(Context ctx) throws FileNotFoundException {
+	public static String Get(Context ctx) throws FileNotFoundException {
 
 		String line = null;
 		

@@ -26,14 +26,18 @@ public class DroidTool extends Activity implements OnClickListener {
     	
     	String text = "Hello, " + et_uname.getText().toString() + ". \n\n";
     	String token;
+    	String token2;
     	//String test ="Hello there \n\n ";
     	try {
     		String name = et_uname.getText().toString();
     		String pw = et_pw.getText().toString();
     		//test += URLReader.getToken("ig", "krnlP4N!C");
     		token = URLReader.getToken(name, pw);
-    		text+= URLReader.checkToken(name, "bjork")+"\n";
-    		text += token;
+    		StorageInterface.Save(token, getApplicationContext());
+    		token2 = StorageInterface.Get(getApplicationContext());
+    		text+= URLReader.checkToken(name, token)+"\n";
+    		//text+= URLReader.getInterne(name, token)+"\n";
+    		text += token +"\n" + token2;
 		} 
     	catch (TokenException e) {
 			//Popup: wrong Token; reprompt for username/password
