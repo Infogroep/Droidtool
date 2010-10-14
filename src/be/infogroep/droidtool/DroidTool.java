@@ -1,6 +1,7 @@
 package be.infogroep.droidtool;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -41,9 +42,21 @@ public class DroidTool extends Activity implements OnClickListener {
 		} 
     	catch (TokenException e) {
 			//Popup: wrong Token; reprompt for username/password
+    		
+    		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+    		dialogBuilder.setMessage("Your login was not correct. Reenter username and password");
+    		dialogBuilder.create().show();
+    		
 		}
 		catch (Exception e) {
+			//for some readon we end up here when getToken Fails => this one is for you Tom
 			e.getMessage();
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+    		dialogBuilder.setMessage("Your login was not correct. Reenter username and password");
+    		dialogBuilder.setCancelable(true);
+    		et_uname.setText("");
+    		et_pw.setText("");
+    		dialogBuilder.create().show();
 		}
     		
     	tv.setText(text);	
