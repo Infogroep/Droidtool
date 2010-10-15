@@ -42,21 +42,13 @@ public class DroidTool extends Activity implements OnClickListener {
 		} 
     	catch (TokenException e) {
 			//Popup: wrong Token; reprompt for username/password
-    		
     		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-    		dialogBuilder.setMessage("Your login was not correct. Reenter username and password");
+    		dialogBuilder.setMessage(e.getError());
     		dialogBuilder.create().show();
     		
 		}
 		catch (Exception e) {
-			//for some readon we end up here when getToken Fails => this one is for you Tom
 			e.getMessage();
-			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-    		dialogBuilder.setMessage("Your login was not correct. Reenter username and password");
-    		dialogBuilder.setCancelable(true);
-    		et_uname.setText("");
-    		et_pw.setText("");
-    		dialogBuilder.create().show();
 		}
     		
     	tv.setText(text);	
