@@ -37,7 +37,6 @@ public class DroidTool extends Activity implements OnClickListener {
     		StorageInterface.Save(token, getApplicationContext());
     		token2 = StorageInterface.Get(getApplicationContext());
     		text+= URLReader.checkToken(name, token)+"\n";
-    		//text+= URLReader.getInterne(name, token)+"\n";
     		text += token +"\n" + token2;
 		} 
     	catch (TokenException e) {
@@ -49,6 +48,9 @@ public class DroidTool extends Activity implements OnClickListener {
 		}
 		catch (Exception e) {
 			e.getMessage();
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+    		dialogBuilder.setMessage(e.getMessage());
+    		dialogBuilder.create().show();
 		}
     		
     	tv.setText(text);	

@@ -3,23 +3,34 @@ import java.net.*;
 import java.io.*;
 
 public class URLReader {
-	public static String checkToken(String name, String token) throws Exception {
+	public static Boolean checkToken(String name, String token) throws Exception {
 		String url = "http://infogroep.be:2007/validate";
 		URL open;
 		URLConnection openConnection;
+		String returnvalue ="";
 		try {
 			open = new URL(url);
 			openConnection = open.openConnection();
 			openConnection.setRequestProperty("Token", token);
 			openConnection.setRequestProperty("Accept", "*, */*");
 			openConnection.connect();
+			BufferedReader in = new BufferedReader (
+					new InputStreamReader(
+							openConnection.getInputStream()), 10);
+			
+			String inputLine="";
+			
+			while ((inputLine = in.readLine()) != null)
+				returnvalue += inputLine;
+			in.close();
 		}
-		catch (IOException e) {
-			//Call method; catch TokenExcpetion; prompt for username and password; generate new token.
-			throw new TokenException("Token no longer valid");
-			//Other exceptions are thrown through
+		catch (Exception e){
+			e.getCause();
 		}
-		return "Token Valid";
+		if (returnvalue == "") {
+			throw new TokenException ("Token Expired");
+		}
+		return true;
 	}
 	public static String getInterne(String name, String token) throws Exception {
 		String url = "http://infogroep.be:2007/interne//"+name;
