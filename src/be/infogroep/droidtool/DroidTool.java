@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.widget.TextView;
+//import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
 import android.view.View;
@@ -23,7 +23,7 @@ public class DroidTool extends Activity implements OnClickListener {
     }
     @Override
     public void onClick(View v) {
-    	TextView tv = (TextView)this.findViewById(R.id.tv_welcome);
+    	//TextView tv = (TextView)this.findViewById(R.id.tv_welcome);
     	EditText et_uname = (EditText)this.findViewById(R.id.txt_name);
     	EditText et_pw = (EditText)this.findViewById(R.id.txt_pw);
     	
