@@ -1,6 +1,8 @@
 package be.infogroep.droidtool;
 
 import android.app.Activity;
+import android.content.Intent;
+
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -53,7 +55,10 @@ public class DroidTool extends Activity implements OnClickListener {
     		dialogBuilder.create().show();
 		}
     		
-    	tv.setText(text);	
+		 Intent i = new Intent(this, Menu.class); 
+		 //Intent(DroidTool.this, menu.class);
+         startActivity(i);
+    	//tv.setText(text);	
     }
 }
 
