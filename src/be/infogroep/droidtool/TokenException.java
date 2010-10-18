@@ -11,7 +11,7 @@ public class TokenException extends Exception {
 		super(err);
 		mistake = err;
 	}
-	public String getError() {
+	public String getMessage() {
 		return mistake;
 	}
 }

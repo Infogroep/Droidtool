@@ -3,7 +3,7 @@ import java.net.*;
 import java.io.*;
 
 public class URLReader {
-	public static Boolean checkToken(String name, String token) throws Exception {
+	public static Boolean checkToken(String token) throws Exception {
 		String url = "http://infogroep.be:2007/validate";
 		URL open;
 		URLConnection openConnection;

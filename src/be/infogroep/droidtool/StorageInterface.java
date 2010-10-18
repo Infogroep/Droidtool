@@ -13,22 +13,25 @@ import android.content.Context;
 public class StorageInterface {
 
 	static String FILENAME = "DroidtoolStorage";
-	
 	//use getApplicationContext() as context parm
-	public static void Save(String token, Context ctx) throws FileNotFoundException {
+	public static void Save(String token, Context ctx) {
 		String string = token;
 		
-		FileOutputStream fos = ctx.openFileOutput(FILENAME, Context.MODE_PRIVATE); //openFileOutput underlined red
         try {
-          fos.write(string.getBytes());
-          fos.close();
-        } catch (IOException e) {
+        	FileOutputStream fos = ctx.openFileOutput(FILENAME, Context.MODE_PRIVATE); //openFileOutput underlined red
+        	fos.write(string.getBytes());
+        	fos.close();
+        }
+        catch (FileNotFoundException e){
+        	//
+        }
+        catch (IOException e) {
           //Log.e("Controller", e.getMessage() + e.getLocalizedMessage() + e.getCause());
         }
 
 	}
 	
-	public static String Get(Context ctx) throws FileNotFoundException {
+	public static String Get(Context ctx) {
 
 		String line = null;
 		

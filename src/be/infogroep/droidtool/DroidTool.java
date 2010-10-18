@@ -1,64 +1,72 @@
 package be.infogroep.droidtool;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import android.app.Activity;
 import android.content.Intent;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-//import android.widget.TextView;
+import android.content.Context;
 import android.widget.EditText;
 import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 public class DroidTool extends Activity implements OnClickListener {
+	private Context c = this;
+	private Activity a = this;
+	//Hier gaat hij op zijnen bek, must fix!
+	//private String token = StorageInterface.Get(c);
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-        Button b = (Button)this.findViewById(R.id.btn_confirm);
-        b.setOnClickListener(this);
+        setupViews();
+    }
+    private void setupViews() {
+    	View scanButton = findViewById(R.id.scan_button); 
+		scanButton.setOnClickListener(this); 
+
+		View inputButton = findViewById(R.id.input_button); 
+		inputButton.setOnClickListener(this);
+
+		View aboutButton = findViewById(R.id.about_button); 
+		aboutButton.setOnClickListener(this); 
+
+		View exitButton = findViewById(R.id.exit_button); 
+		exitButton.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
-    	//TextView tv = (TextView)this.findViewById(R.id.tv_welcome);
-    	EditText et_uname = (EditText)this.findViewById(R.id.txt_name);
-    	EditText et_pw = (EditText)this.findViewById(R.id.txt_pw);
-    	
-    	String text = "Hello, " + et_uname.getText().toString() + ". \n\n";
-    	String token;
-    	String token2;
-    	//String test ="Hello there \n\n ";
+    	String token = "blort";
+    	Intent i = null;
     	try {
-    		String name = et_uname.getText().toString();
-    		String pw = et_pw.getText().toString();
-    		//test += URLReader.getToken("ig", "krnlP4N!C");
-    		token = URLReader.getToken(name, pw);
-    		StorageInterface.Save(token, getApplicationContext());
-    		token2 = StorageInterface.Get(getApplicationContext());
-    		text+= URLReader.checkToken(name, token)+"\n";
-    		text += token +"\n" + token2;
-		} 
-    	catch (TokenException e) {
-			//Popup: wrong Token; reprompt for username/password
+    		switch (v.getId())
+    		{
+    		case R.id.scan_button:
+    			if (URLReader.checkToken(token)) {
+    				IntentIntegrator.initiateScan(a);
+    			}
+    			break;
+    		case R.id.input_button:
+    			if (URLReader.checkToken(token)) {
+    				//Manual Input view here!
+    			}
+    			break;
+    		case R.id.exit_button:
+    			finish();
+    			break;
+    		}
+    	}
+    	catch (Exception e) {
     		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-    		dialogBuilder.setMessage(e.getError());
-    		dialogBuilder.create().show();
-    		
-		}
-		catch (Exception e) {
-			e.getMessage();
-			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
     		dialogBuilder.setMessage(e.getMessage());
     		dialogBuilder.create().show();
-		}
-    		
-		 Intent i = new Intent(this, Menu.class); 
-		 //Intent(DroidTool.this, menu.class);
-         startActivity(i);
-    	//tv.setText(text);	
+    	}
     }
 }
 
