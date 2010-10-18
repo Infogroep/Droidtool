@@ -50,7 +50,7 @@ public class DroidTool extends Activity implements OnClickListener {
     }
     @Override
     public void onClick(View v) {
-    	String token = "blort";
+    	//String token = "blort";
     	Intent i = null;
     	try {
     		switch (v.getId())
@@ -87,6 +87,12 @@ public class DroidTool extends Activity implements OnClickListener {
                 	String name = et_uname.getText().toString();
                 	String pw = et_pw.getText().toString();
                 	String test = name + " " + pw;
+                	try {
+						token = URLReader.getToken(name, pw);
+						StorageInterface.Save(token, getApplicationContext());
+					} catch (Exception e) {
+						Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();						
+					}
                 	
                 	Toast.makeText(getApplicationContext(), test, Toast.LENGTH_SHORT).show();
                 }
