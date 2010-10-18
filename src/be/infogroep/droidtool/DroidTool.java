@@ -4,6 +4,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 
 import android.app.AlertDialog;
@@ -17,13 +18,17 @@ import android.view.View.OnClickListener;
 public class DroidTool extends Activity implements OnClickListener {
 	private Context c = this;
 	private Activity a = this;
+	//private String test = "token";
+	private String token;
 	//Hier gaat hij op zijnen bek, must fix!
-	//private String token = StorageInterface.Get(c);
+	
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //StorageInterface.Save(test, getApplicationContext());
+        token = StorageInterface.Get(c);
         setContentView(R.layout.main);
         setupViews();
     }
@@ -63,9 +68,14 @@ public class DroidTool extends Activity implements OnClickListener {
     		}
     	}
     	catch (Exception e) {
-    		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-    		dialogBuilder.setMessage(e.getMessage());
-    		dialogBuilder.create().show();
+    		Dialog dl = new Dialog(c);
+            dl.setTitle("Information Prompt");
+            dl.setContentView(R.layout.login);
+            EditText et_uname = (EditText)dl.findViewById(R.id.txt_name);
+            EditText et_pw = (EditText)this.findViewById(R.id.txt_pw);
+            String name = et_uname.getText().toString();
+            String pw = et_pw.getText().toString();
+            dl.show();
     	}
     }
 }

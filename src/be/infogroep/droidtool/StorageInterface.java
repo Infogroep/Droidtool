@@ -43,8 +43,6 @@ public class StorageInterface {
 			InputStreamReader input = new InputStreamReader(fin);
 			BufferedReader buffreader = new BufferedReader(input);
 
-			
-
 			// read every line of the file into the line-variable, on line at the time
 			//while (( line = buffreader.readLine())) {
 				// do something with the settings from the file
@@ -54,6 +52,7 @@ public class StorageInterface {
 			// close the file again
 			fin.close();
 		} catch (java.io.FileNotFoundException e) {
+			line = "token";
 			// do something if the myfilename.txt does not exits
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
