@@ -5,6 +5,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.content.Context;
 import android.widget.EditText;
 import android.widget.Button;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -68,14 +70,30 @@ public class DroidTool extends Activity implements OnClickListener {
     		}
     	}
     	catch (Exception e) {
-    		Dialog dl = new Dialog(c);
-            dl.setTitle("Login");
-            dl.setContentView(R.layout.login);
-            EditText et_uname = (EditText)dl.findViewById(R.id.txt_name);
-            EditText et_pw = (EditText)this.findViewById(R.id.txt_pw);
-            //String name = et_uname.getText().toString();
-            //String pw = et_pw.getText().toString();
-            dl.show();
+            
+            LayoutInflater factory = LayoutInflater.from(this);
+            final View textEntryView = factory.inflate(R.layout.login, null);
+            
+            AlertDialog login_popup = new AlertDialog.Builder(DroidTool.this)
+            .setTitle("Login")
+            //.setView(uname)
+            .setView(textEntryView)
+            .setPositiveButton("login", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+
+                    /* User clicked OK so do some stuff */
+                }
+            })
+            .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+
+                    /* User clicked Cancel so do some stuff */
+                }
+            })
+            .create();
+            
+            login_popup.show();
+            
     	}
     }
 }
