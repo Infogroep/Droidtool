@@ -77,27 +77,27 @@ public class DroidTool extends Activity implements OnClickListener {
             
             final AlertDialog login_popup = new AlertDialog.Builder(DroidTool.this)
             .setTitle("Login")
-            //.setView(uname)
             .setView(textEntryView)
             .create();
+            
             login_popup.setButton("login", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
                 	EditText et_uname = (EditText) login_popup.findViewById(R.id.txt_name);
-                	//EditText et_pw = (EditText) findViewById(R.id.txt_pw);
+                	EditText et_pw = (EditText) login_popup.findViewById(R.id.txt_pw);
                 	String name = et_uname.getText().toString();
-                	//String pw = et_pw.getText().toString();
-                	//String test = name + " " + pw;
+                	String pw = et_pw.getText().toString();
+                	String test = name + " " + pw;
                 	
-                	Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+                	Toast.makeText(getApplicationContext(), test, Toast.LENGTH_SHORT).show();
                 }
             });
             
-//            login_popup.setButton("cancel", new DialogInterface.OnClickListener() {
-//                public void onClick(DialogInterface dialog, int whichButton) {
-//
-//                    /* User clicked Cancel so do some stuff */
-//                }
-//            });
+            login_popup.setButton2("cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                	Toast.makeText(getApplicationContext(), "CANCEL", Toast.LENGTH_SHORT).show();
+                }
+            });
+          
             
             
             login_popup.show();
