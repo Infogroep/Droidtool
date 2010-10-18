@@ -4,7 +4,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import android.app.Activity;
-import android.app.Dialog;
+//import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
@@ -12,7 +12,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.content.Context;
 import android.widget.EditText;
-import android.widget.Button;
+//import android.widget.Button;
 import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +21,8 @@ import android.view.View.OnClickListener;
 public class DroidTool extends Activity implements OnClickListener {
 	private Context c = this;
 	private Activity a = this;
-	//private String test = "token";
 	private String token;
-	//Hier gaat hij op zijnen bek, must fix!
+	private String debugger = "tstrickx"; //TODO debugging purposes, moet gelezen worden van file samen met token!!
 	
 
     /** Called when the activity is first created. */
@@ -50,8 +49,7 @@ public class DroidTool extends Activity implements OnClickListener {
     }
     @Override
     public void onClick(View v) {
-    	//String token = "blort";
-    	Intent i = null;
+    	//Intent i = null;
     	try {
     		switch (v.getId())
     		{
@@ -108,6 +106,21 @@ public class DroidTool extends Activity implements OnClickListener {
             
             login_popup.show();
             
+    	}
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	switch (requestCode) {
+    	case IntentIntegrator.REQUEST_CODE:
+    		if (resultCode != RESULT_CANCELED) {
+    			IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+    			if (scanResult != null)
+				{
+					String upc = scanResult.getContents();
+					// Barcode hieronder is om te testen, kzit thuis, en geen blikjes, (Dit is cola)
+					URLReader.postScribble(debugger, token, "5449000000996");
+				}
+    		}
+    		break;
     	}
     }
 }
