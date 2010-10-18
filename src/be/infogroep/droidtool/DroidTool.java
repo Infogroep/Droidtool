@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.content.Context;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -74,23 +75,30 @@ public class DroidTool extends Activity implements OnClickListener {
             LayoutInflater factory = LayoutInflater.from(this);
             final View textEntryView = factory.inflate(R.layout.login, null);
             
-            AlertDialog login_popup = new AlertDialog.Builder(DroidTool.this)
+            final AlertDialog login_popup = new AlertDialog.Builder(DroidTool.this)
             .setTitle("Login")
             //.setView(uname)
             .setView(textEntryView)
-            .setPositiveButton("login", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-
-                    /* User clicked OK so do some stuff */
-                }
-            })
-            .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-
-                    /* User clicked Cancel so do some stuff */
-                }
-            })
             .create();
+            login_popup.setButton("login", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                	EditText et_uname = (EditText) login_popup.findViewById(R.id.txt_name);
+                	//EditText et_pw = (EditText) findViewById(R.id.txt_pw);
+                	String name = et_uname.getText().toString();
+                	//String pw = et_pw.getText().toString();
+                	//String test = name + " " + pw;
+                	
+                	Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+                }
+            });
+            
+//            login_popup.setButton("cancel", new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface dialog, int whichButton) {
+//
+//                    /* User clicked Cancel so do some stuff */
+//                }
+//            });
+            
             
             login_popup.show();
             
