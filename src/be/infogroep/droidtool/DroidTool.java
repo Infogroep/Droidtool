@@ -69,12 +69,12 @@ public class DroidTool extends Activity implements OnClickListener {
     	}
     	catch (Exception e) {
     		Dialog dl = new Dialog(c);
-            dl.setTitle("Information Prompt");
+            dl.setTitle("Login");
             dl.setContentView(R.layout.login);
             EditText et_uname = (EditText)dl.findViewById(R.id.txt_name);
             EditText et_pw = (EditText)this.findViewById(R.id.txt_pw);
-            String name = et_uname.getText().toString();
-            String pw = et_pw.getText().toString();
+            //String name = et_uname.getText().toString();
+            //String pw = et_pw.getText().toString();
             dl.show();
     	}
     }
