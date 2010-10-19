@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, DroidTool!</string>
+    
     <string name="app_name">DroidTool</string>
 <string name="scan_label">Scan</string>
 <string name="about_label">About</string>
 <string name="input_label">Manual Input </string>
 <string name="exit_label">Exit</string>
+<string name="igtool_server">http://infogroep.be:2007</string>
 </resources>
