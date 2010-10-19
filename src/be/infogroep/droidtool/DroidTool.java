@@ -7,7 +7,6 @@ import android.app.Activity;
 //import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -51,6 +50,9 @@ public class DroidTool extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		//Intent i = null;
+		token = StorageInterface.Get("token", c);
+		debugger = StorageInterface.Get("name", c);
+		
 		try {
 			switch (v.getId())
 			{
@@ -70,43 +72,8 @@ public class DroidTool extends Activity implements OnClickListener {
 			}
 		}
 		catch (Exception e) {
-
-			LayoutInflater factory = LayoutInflater.from(this);
-			final View textEntryView = factory.inflate(R.layout.login, null);
-
-			final AlertDialog login_popup = new AlertDialog.Builder(DroidTool.this)
-			.setTitle("Login")
-			.setView(textEntryView)
-			.create();
-
-			login_popup.setButton("login", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					EditText et_uname = (EditText) login_popup.findViewById(R.id.txt_name);
-					EditText et_pw = (EditText) login_popup.findViewById(R.id.txt_pw);
-					String name = et_uname.getText().toString();
-					String pw = et_pw.getText().toString();
-					String test = name + " " + pw;
-					try {
-						token = URLReader.getToken(name, pw);
-						StorageInterface.Save("token", token, c);
-						StorageInterface.Save("name", name, c);
-						
-					} catch (Exception e) {
-						Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();						
-					}
-
-					Toast.makeText(getApplicationContext(), test, Toast.LENGTH_SHORT).show();
-				}
-			});
-
-			login_popup.setButton2("cancel", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					Toast.makeText(getApplicationContext(), "CANCEL", Toast.LENGTH_SHORT).show();
-				}
-			});
-
-
-
+			
+			final AlertDialog login_popup = Login.makeLogin(c);
 			login_popup.show();
 
 		}
