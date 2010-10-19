@@ -1,64 +1,26 @@
 package be.infogroep.droidtool;
 
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import android.content.Context;
+import android.content.SharedPreferences;
 
 public class StorageInterface {
 
 	static String FILENAME = "DroidtoolStorage";
-	//use getApplicationContext() as context parm
-	public static void Save(String token, Context ctx) {
-		String string = token;
-		
-        try {
-        	FileOutputStream fos = ctx.openFileOutput(FILENAME, Context.MODE_PRIVATE); //openFileOutput underlined red
-        	fos.write(string.getBytes());
-        	fos.close();
-        }
-        catch (FileNotFoundException e){
-        	//
-        }
-        catch (IOException e) {
-          //Log.e("Controller", e.getMessage() + e.getLocalizedMessage() + e.getCause());
-        }
+	public static final String PREFS_NAME = "DroidToolPrefsFile";
 
+	public static SharedPreferences prefsInitial;
+	//use getApplicationContext() as context parm
+	public static void Save(String key, String val, Context c) {
+		SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString(key, val);
+		editor.commit();
 	}
 	
-	public static String Get(Context ctx) {
+	public static String Get(String key, Context c) {
 
-		String line = null;
-		
-		try {
-			InputStream fin = ctx.openFileInput(FILENAME); 
-			// if file the available for reading
-
-			// prepare the file for reading
-			InputStreamReader input = new InputStreamReader(fin);
-			BufferedReader buffreader = new BufferedReader(input);
-
-			// read every line of the file into the line-variable, on line at the time
-			//while (( line = buffreader.readLine())) {
-				// do something with the settings from the file
-			//}
-			
-			line = buffreader.readLine();
-			// close the file again
-			fin.close();
-		} catch (java.io.FileNotFoundException e) {
-			line = "token";
-			// do something if the myfilename.txt does not exits
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-		return line;
+		SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
+		String check = settings.getString(key, "");
+		return check;
 	}
 }
