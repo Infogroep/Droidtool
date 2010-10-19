@@ -4,7 +4,7 @@ import java.io.*;
 
 public class URLReader {
 	public static Boolean checkToken(String token) throws Exception {
-		String url = "http://bennit.be:2007/validate";
+		String url = "http://infogroep.be:2007/validate";
 		URL open;
 		URLConnection openConnection;
 		String returnvalue ="";
@@ -33,7 +33,7 @@ public class URLReader {
 		return true;
 	}
 	public static String getInterne(String name, String token) throws Exception {
-		String url = "http://bennit.be:2007/interne//"+name;
+		String url = "http://infogroep.be:2007/interne//"+name;
 		URL igwe = new URL(url);
 		URLConnection igweConnection = igwe.openConnection();
 		igweConnection.setRequestProperty("Token", token);
@@ -57,7 +57,7 @@ public class URLReader {
 		try {
 		data = "--- \nusername: " + name + "\n" + "password: " + password;
 		
-		URL igwe = new URL("http://bennit.be:2007/wannabe");
+		URL igwe = new URL("http://infogroep.be:2007/wannabe");
 		URLConnection con = igwe.openConnection();
 		con.setRequestProperty("Content-Type", "text/yaml");
 		con.setRequestProperty("Accept", "*, */*");
@@ -81,7 +81,7 @@ public class URLReader {
 		return output.substring(1, output.length() -1);
 	}
 	public static void postScribble(String name, String token, String upc) {
-		String url = "http://bennit.be:2007/scribble";
+		String url = "http://infogroep.be:2007/scribble";
 		String data;
 		String output ="";
 		try {

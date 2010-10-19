@@ -88,6 +88,7 @@ public class DroidTool extends Activity implements OnClickListener {
 					String test = name + " " + pw;
 					try {
 						token = URLReader.getToken(name, pw);
+						debugger = name;
 						StorageInterface.Save("token", token, c);
 						StorageInterface.Save("name", name, c);
 						
