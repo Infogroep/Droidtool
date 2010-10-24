@@ -13,6 +13,7 @@
         </activity>
 
     <activity android:label="Menu" android:name="Menu"></activity>
+<activity android:label="Quick" android:name="Quick"></activity>
 </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-sdk android:minSdkVersion="3" />

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="bar_quick1">5449000000996</string>
+<string name="bar_quick2">5449000111678</string>
+<string name="bar_quick3">5449000014535</string>
+<string name="bar_quick4">5410033820103</string>
+<string name="bar_quick5">5449000027382</string>
+<string name="bar_quick6">8710398601674</string>
+<string name="bar_quick7">76222276</string>
+<string name="bar_quick8">5410081202609</string>
+
+<string name="txt_quick1">cola</string>
+<string name="txt_quick2">Chaudfontaine</string>
+<string name="txt_quick3">Sprite</string>
+<string name="txt_quick4">Lipton ice tea</string>
+<string name="txt_quick5">Nestea</string>
+<string name="txt_quick6">Supah chips: peper/zout</string>
+<string name="txt_quick7">Leo</string>
+<string name="txt_quick8">Double lait</string>
+</resources>

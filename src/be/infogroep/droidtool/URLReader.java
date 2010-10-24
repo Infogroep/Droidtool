@@ -2,9 +2,16 @@ package be.infogroep.droidtool;
 import java.net.*;
 import java.io.*;
 
+import android.content.Context;
+import android.widget.Toast;
+import android.app.Activity;
+
 public class URLReader {
+	
+	private static String server = "http://infogroep.be:2007/"; //findViewByID(R.string.igtool_server); 
+	
 	public static Boolean checkToken(String token) throws Exception {
-		String url = "http://infogroep.be:2007/validate";
+		String url = server + "validate";
 		URL open;
 		URLConnection openConnection;
 		String returnvalue ="";
@@ -33,7 +40,7 @@ public class URLReader {
 		return true;
 	}
 	public static String getInterne(String name, String token) throws Exception {
-		String url = "http://infogroep.be:2007/interne//"+name;
+		String url = server + "interne//"+name;
 		URL igwe = new URL(url);
 		URLConnection igweConnection = igwe.openConnection();
 		igweConnection.setRequestProperty("Token", token);
@@ -57,7 +64,7 @@ public class URLReader {
 		try {
 		data = "--- \nusername: " + name + "\n" + "password: " + password;
 		
-		URL igwe = new URL("http://infogroep.be:2007/wannabe");
+		URL igwe = new URL(server + "wannabe");
 		URLConnection con = igwe.openConnection();
 		con.setRequestProperty("Content-Type", "text/yaml");
 		con.setRequestProperty("Accept", "*, */*");
@@ -80,8 +87,8 @@ public class URLReader {
 		//Stripping begin and end quotes
 		return output.substring(1, output.length() -1);
 	}
-	public static void postScribble(String name, String token, String upc) {
-		String url = "http://infogroep.be:2007/scribble";
+	public static void postScribble(String name, String token, String upc, Context c) {
+		String url = server + "scribble";
 		String data;
 		String output ="";
 		try {
@@ -107,7 +114,7 @@ public class URLReader {
 			in.close();
 		}
 		catch (Exception e){
-			//doe stuff
+			Toast.makeText(c, "ERROR during postScribble", Toast.LENGTH_SHORT).show();
 		}
 	}
 }

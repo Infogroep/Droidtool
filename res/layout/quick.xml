@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" android:stretchColumns="2">
+
+
+
+<TableRow android:id="@+id/TableRow01" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+<Button android:text="@string/txt_quick1" 
+android:id="@+id/quick_button1" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<Button android:text="@string/txt_quick2" 
+android:id="@+id/quick_button2" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+</TableRow>
+<TableRow android:id="@+id/TableRow02" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+<Button android:text="@string/txt_quick3" 
+android:id="@+id/quick_button3" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<Button android:text="@string/txt_quick4" 
+android:id="@+id/quick_button4" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+</TableRow>
+<TableRow android:id="@+id/TableRow03" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+<Button android:text="@string/txt_quick5" 
+android:id="@+id/quick_button5" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<Button android:text="@string/txt_quick6" 
+android:id="@+id/quick_button6" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+</TableRow>
+<TableRow android:id="@+id/TableRow04" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+<Button android:text="@string/txt_quick7" 
+android:id="@+id/quick_button7" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+<Button android:text="@string/txt_quick8" 
+android:id="@+id/quick_button8" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content">
+</Button>
+</TableRow>
+
+
+</TableLayout>

@@ -6,5 +6,7 @@
 <string name="about_label">About</string>
 <string name="input_label">Manual Input </string>
 <string name="exit_label">Exit</string>
-<string name="igtool_server">http://infogroep.be:2007</string>
+<string name="igtool_server">http://infogroep.be:2007/</string>
+
+<string name="quick_label">quick scribble</string>
 </resources>

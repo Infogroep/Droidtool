@@ -40,6 +40,9 @@ public class DroidTool extends Activity implements OnClickListener {
 
 		View inputButton = findViewById(R.id.input_button); 
 		inputButton.setOnClickListener(this);
+		
+		View quickButton = findViewById(R.id.quick_button); 
+		quickButton.setOnClickListener(this);
 
 		View aboutButton = findViewById(R.id.about_button); 
 		aboutButton.setOnClickListener(this); 
@@ -66,6 +69,12 @@ public class DroidTool extends Activity implements OnClickListener {
 					//Manual Input view here!
 				}
 				break;
+			case R.id.quick_button:
+				if (URLReader.checkToken(token)) {
+					Intent i = new Intent(DroidTool.this, Quick.class);
+					startActivity(i);
+				}
+				break;
 			case R.id.exit_button:
 				finish();
 				break;
@@ -86,7 +95,7 @@ public class DroidTool extends Activity implements OnClickListener {
 				if (scanResult != null)
 				{
 					String upc = scanResult.getContents();
-					URLReader.postScribble(debugger, token, upc);
+					URLReader.postScribble(debugger, token, upc, c);
 				}
 			}
 			break;
