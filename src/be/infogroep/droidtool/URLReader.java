@@ -9,6 +9,7 @@ import android.app.Activity;
 public class URLReader {
 	
 	private static String server = "http://infogroep.be:2007/"; //findViewByID(R.string.igtool_server); 
+	//private static String server = "http://bennit.be:2007/";
 	
 	public static Boolean checkToken(String token) throws Exception {
 		String url = server + "validate";

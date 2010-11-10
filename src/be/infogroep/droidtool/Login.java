@@ -10,6 +10,20 @@ import android.app.AlertDialog;
 
 public class Login {
 	
+	public static boolean tryLogin(final Context c){
+		String name = StorageInterface.Get("name", c);
+		String pw = StorageInterface.Get("pw", c);
+		try {
+			String token = URLReader.getToken(name, pw);
+			StorageInterface.Save("token", token, c);
+			return true;
+			
+		} catch (Exception e) {
+			return false;						
+		}
+		
+	}
+	
 	public static AlertDialog makeLogin(final Context c){
 		
 		LayoutInflater factory = LayoutInflater.from(c);
@@ -32,6 +46,7 @@ public class Login {
 					token = URLReader.getToken(name, pw);
 					StorageInterface.Save("token", token, c);
 					StorageInterface.Save("name", name, c);
+					StorageInterface.Save("pw", pw, c);
 					
 				} catch (Exception e) {
 					Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();						

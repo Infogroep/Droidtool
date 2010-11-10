@@ -23,6 +23,7 @@ public class DroidTool extends Activity implements OnClickListener {
 	private Activity a = this;
 	private String token;
 	private String debugger;
+	private String pw;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -31,6 +32,7 @@ public class DroidTool extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		token = StorageInterface.Get("token", c);
 		debugger = StorageInterface.Get("name", c);
+		pw = StorageInterface.Get("pw", c);
 		setContentView(R.layout.main);
 		setupViews();
 	}
@@ -82,8 +84,10 @@ public class DroidTool extends Activity implements OnClickListener {
 		}
 		catch (Exception e) {
 			
+			if (! Login.tryLogin(c)) {
 			final AlertDialog login_popup = Login.makeLogin(c);
 			login_popup.show();
+			}
 
 		}
 	}
