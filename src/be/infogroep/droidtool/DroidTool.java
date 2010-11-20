@@ -123,8 +123,8 @@ public class DroidTool extends Activity implements OnClickListener {
 	
 	private void setDefaultServer() {
 		if (StorageInterface.Get("server", c) == ""){
-			//StorageInterface.Save("server", "http://infogroep.be:2007/", c);
-			StorageInterface.Save("server", "http://bennit.be:2007/", c);
+			StorageInterface.Save("server", "http://infogroep.be:2007/", c);
+			//StorageInterface.Save("server", "http://bennit.be:2007/", c);
 		}
 		//Toast.makeText(c, "TESTING", Toast.LENGTH_SHORT).show();
 	}
