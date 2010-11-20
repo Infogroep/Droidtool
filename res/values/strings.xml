@@ -9,4 +9,7 @@
 <string name="igtool_server">http://infogroep.be:2007/</string>
 
 <string name="quick_label">quick scribble</string>
+<string name="menu_settings">Settings</string>
+
+
 </resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:stretchColumns="0">
+
+	<TableRow android:id="@+id/change_server_row"
+		android:clickable="true">
+		<TextView android:text="Change server" android:id="@+id/change_server"
+			android:textColor="#FFFFFF" android:textSize="25sp" 
+			android:paddingLeft="10dip" android:paddingTop ="10dip"/>
+	</TableRow>
+	<TableRow>
+		<TextView android:text="current server" android:id="@+id/current_server"
+			android:textColor="#FFFFFF" android:textSize="15sp" 
+			android:paddingLeft="10dip" android:paddingBottom ="10dip" />
+	</TableRow>
+
+	<View android:layout_height="1dip" android:background="#ACAFBF"/>
+
+	<TableRow android:id="@+id/change_user_row" android:clickable="true">
+		<TextView android:text="Change user" android:id="@+id/change_user"
+			android:textColor="#FFFFFF" android:textSize="25sp" 
+			android:paddingLeft="10dip" android:paddingTop ="10dip" />
+	</TableRow>
+	<TableRow>
+	<TextView android:text="current user" android:id="@+id/current_user"
+		android:textColor="#FFFFFF" android:textSize="15sp" 
+		android:paddingLeft="10dip" android:paddingBottom ="10dip" />
+	</TableRow>
+	<View android:layout_height="1dip" android:background="#ACAFBF" />
+	<TextView android:text="" android:id="@+id/settings_disclamer"
+		android:textColor="#FFFFFF" android:textSize="15sp" 
+		android:paddingLeft="10dip" android:paddingTop ="50dip" />
+
+
+
+</TableLayout>

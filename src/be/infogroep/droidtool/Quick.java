@@ -30,7 +30,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick1));
 						Toast.makeText(c, R.string.bar_quick1, Toast.LENGTH_SHORT).show();
 					}
@@ -47,7 +47,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick2));
 						Toast.makeText(c, R.string.bar_quick2, Toast.LENGTH_SHORT).show();
 					}
@@ -64,7 +64,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick3));
 						Toast.makeText(c, R.string.bar_quick3, Toast.LENGTH_SHORT).show();
 					}
@@ -81,7 +81,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick4));
 						Toast.makeText(c, R.string.bar_quick4, Toast.LENGTH_SHORT).show();
 					}
@@ -98,7 +98,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick5));
 						Toast.makeText(c, R.string.bar_quick5, Toast.LENGTH_SHORT).show();
 					}
@@ -115,7 +115,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick6));
 						Toast.makeText(c, R.string.bar_quick7, Toast.LENGTH_SHORT).show();
 					}
@@ -132,7 +132,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick7));
 						Toast.makeText(c, R.string.bar_quick7, Toast.LENGTH_SHORT).show();
 					}
@@ -149,7 +149,7 @@ public class Quick extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (URLReader.checkToken(token)) {
+					if (URLReader.checkToken(token, c)) {
 						scribble(getString(R.string.bar_quick8));
 						Toast.makeText(c, R.string.bar_quick8, Toast.LENGTH_SHORT).show();
 					}

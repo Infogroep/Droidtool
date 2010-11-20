@@ -8,10 +8,12 @@ import android.app.Activity;
 
 public class URLReader {
 	
-	private static String server = "http://infogroep.be:2007/"; //findViewByID(R.string.igtool_server); 
+	private static String server;
+	//= "http://infogroep.be:2007/"; //findViewByID(R.string.igtool_server); 
 	//private static String server = "http://bennit.be:2007/";
 	
-	public static Boolean checkToken(String token) throws Exception {
+	public static Boolean checkToken(String token, Context c) throws Exception {
+		server = StorageInterface.Get("server", c);
 		String url = server + "validate";
 		URL open;
 		URLConnection openConnection;
@@ -40,7 +42,8 @@ public class URLReader {
 		}
 		return true;
 	}
-	public static String getInterne(String name, String token) throws Exception {
+	public static String getInterne(String name, String token, Context c) throws Exception {
+		server = StorageInterface.Get("server", c);
 		String url = server + "interne//"+name;
 		URL igwe = new URL(url);
 		URLConnection igweConnection = igwe.openConnection();
@@ -59,7 +62,8 @@ public class URLReader {
 		in.close();
 		return returnvalue;
 	}
-	public static String getToken(String name, String password) throws Exception {
+	public static String getToken(String name, String password, Context c) throws Exception {
+		server = StorageInterface.Get("server", c);
 		String data;
 		String output="";
 		try {
@@ -89,6 +93,7 @@ public class URLReader {
 		return output.substring(1, output.length() -1);
 	}
 	public static void postScribble(String name, String token, String upc, Context c) {
+		server = StorageInterface.Get("server", c);
 		String url = server + "scribble";
 		String data;
 		String output ="";
