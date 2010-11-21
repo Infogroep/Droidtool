@@ -1,5 +1,7 @@
 package be.infogroep.droidtool;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.io.*;
 
 import android.content.Context;
@@ -100,6 +102,7 @@ public class URLReader {
 		try {
 			data = "--- \nitems: [[\""+ upc + "\", 1]]\n" + "debugger: " + name;
 			
+			
 			URL igwe = new URL(url);
 			URLConnection con = igwe.openConnection();
 			con.setRequestProperty("Token", token);
@@ -122,5 +125,59 @@ public class URLReader {
 		catch (Exception e){
 			Toast.makeText(c, "ERROR during postScribble", Toast.LENGTH_SHORT).show();
 		}
+	}
+	
+	public static void postKaching(String name, String token, String upc, Context c) {
+		server = StorageInterface.Get("server", c);
+		String url = server + "kaching";
+		String data;
+		String output ="";
+		try {
+			data = "--- \nitems: [[\""+ upc + "\", 1]]\n" + "debugger: " + name + "\nstatus: non member";
+			
+			
+			URL igwe = new URL(url);
+			URLConnection con = igwe.openConnection();
+			con.setRequestProperty("Token", token);
+			con.setRequestProperty("Content-Type", "text/yaml");
+			con.setRequestProperty("Accept", "*, */*");
+			con.setDoOutput(true);
+			OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
+			out.write(data);
+			out.flush();
+			BufferedReader in = new BufferedReader(
+					new InputStreamReader(
+							con.getInputStream()));
+			String decode;
+			while ((decode = in.readLine()) != null){
+				output += decode;
+			}
+			out.close();
+			in.close();
+		}
+		catch (Exception e){
+			Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	public static String postProductLookup(String name, String token, String upc, Context c) throws Exception {
+		server = StorageInterface.Get("server", c);
+		String url = server + "product/lookup//"+upc;
+		URL igwe = new URL(url);
+		URLConnection igweConnection = igwe.openConnection();
+		igweConnection.setRequestProperty("Token", token);
+		igweConnection.setRequestProperty("Accept", "*, */*");
+		igweConnection.connect();
+		BufferedReader in = new BufferedReader (
+				new InputStreamReader(
+						igweConnection.getInputStream()), 10);
+		
+		String inputLine="";
+		String returnvalue = "Product: ";
+		
+		while ((inputLine = in.readLine()) != null)
+			returnvalue += inputLine;
+		in.close();
+		return returnvalue;
 	}
 }

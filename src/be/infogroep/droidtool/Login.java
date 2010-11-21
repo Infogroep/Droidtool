@@ -19,6 +19,7 @@ public class Login {
 			return true;
 			
 		} catch (Exception e) {
+			Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();
 			return false;						
 		}
 		

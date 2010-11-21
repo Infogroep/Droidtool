@@ -137,7 +137,13 @@ public class DroidTool extends Activity implements OnClickListener {
 				if (scanResult != null)
 				{
 					String upc = scanResult.getContents();
-					URLReader.postScribble(debugger, token, upc, c);
+					Intent i = new Intent(DroidTool.this, Scan.class);
+					i.putExtra("product", upc);
+					i.putExtra("debugger", debugger);
+					i.putExtra("server", server);
+					i.putExtra("token", token);
+					startActivity(i);
+					//URLReader.postScribble(debugger, token, upc, c);
 				}
 			}
 			break;
